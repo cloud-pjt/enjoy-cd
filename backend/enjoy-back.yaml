@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: enjoy-back-container
-          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back:20250918-080513
+          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back:20250918-085032
           env:
             - name: DB_URL
               #value: "jdbc:mysql://enjoy-db.cbgq4a40uv2k.ap-northeast-2.rds.amazonaws.com/enjoytrip"
