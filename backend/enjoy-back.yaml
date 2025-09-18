@@ -13,35 +13,6 @@ spec:
       labels:
         app: enjoy-back
     spec:
-      initContainers:
-        - name: db-connection-check
-          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back:20250918-080513
-          command:
-            - "/bin/sh"
-            - "-c"
-            - |
-              echo "Checking DB connection..."
-              until mysql -h enjoy-db.cbgq4a40uv2k.ap-northeast-2.rds.amazonaws.com -u enjoydb -pent12345 -e "SELECT 1"; do
-                echo "Waiting for DB to be ready..."
-                sleep 5
-              done
-              echo "DB is ready, proceeding with main container startup."
-          env:
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: enjoy-db-secret
-                  key: DB_HOST
-            - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: enjoy-db-secret
-                  key: DB_USERNAME
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: enjoy-db-secret
-                  key: DB_PASSWORD
       containers:
         - name: enjoy-back-container
           image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back:20250918-080513
