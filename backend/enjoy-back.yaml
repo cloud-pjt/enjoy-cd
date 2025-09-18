@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enjoy-back-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enjoy-back
+  template:
+    metadata:
+      name: enjoy-back-pod
+      labels:
+        app: enjoy-back
+    spec:
+      initContainers:
+        - name: db-connection-check
+          image: mysql:5.7
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              echo "Checking DB connection..."
+              until mysql -h enjoy-db.cbgq4a40uv2k.ap-northeast-2.rds.amazonaws.com -u enjoydb -pent12345 -e "SELECT 1"; do
+                echo "Waiting for DB to be ready..."
+                sleep 5
+              done
+              echo "DB is ready, proceeding with main container startup."
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: enjoy-db-secret
+                  key: DB_HOST
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: enjoy-db-secret
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: enjoy-db-secret
+                  key: DB_PASSWORD
+      containers:
+        - name: enjoy-back-container
+          image: blank98/enjoy-back:1.1
+          env:
+            - name: DB_URL
+              #value: "jdbc:mysql://enjoy-db.cbgq4a40uv2k.ap-northeast-2.rds.amazonaws.com/enjoytrip"
+              valueFrom:
+                secretKeyRef:
+                  name: enjoy-db-secret
+                  key: DB_URL
+            - name: DB_USERNAME
+              # value: "enjoydb"
+              valueFrom:
+                secretKeyRef:
+                  name: enjoy-db-secret
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              #value: "ent12345"
+              valueFrom:
+                secretKeyRef:
+                  name: enjoy-db-secret
+                  key: DB_PASSWORD
+          resources:
+            requests:
+              cpu: 200m
+              memory: 500Mi
+            limits:
+              cpu: 200m
+              memory: 500Mi
