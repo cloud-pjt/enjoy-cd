@@ -18,19 +18,16 @@ spec:
           image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back:20250918-085032
           env:
             - name: DB_URL
-              #value: "jdbc:mysql://enjoy-db.cbgq4a40uv2k.ap-northeast-2.rds.amazonaws.com/enjoytrip"
               valueFrom:
                 secretKeyRef:
                   name: enjoy-db-secret
                   key: DB_URL
             - name: DB_USERNAME
-              # value: "enjoydb"
               valueFrom:
                 secretKeyRef:
                   name: enjoy-db-secret
                   key: DB_USERNAME
             - name: DB_PASSWORD
-              #value: "ent12345"
               valueFrom:
                 secretKeyRef:
                   name: enjoy-db-secret
@@ -42,3 +39,25 @@ spec:
             limits:
               cpu: 200m
               memory: 500Mi
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: enjoy-back
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: enjoy-back
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app: enjoy-back
