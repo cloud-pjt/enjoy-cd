@@ -9,6 +9,11 @@ spec:
   selector:
     matchLabels:
       app: enjoy-front
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1          # 업데이트 시 추가로 생성할 Pod 수
+      maxUnavailable: 1    # 업데이트 중 동시에 다운될 수 있는 Pod 수
   template:
     metadata:
       name: enjoy-front-pod
