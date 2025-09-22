@@ -1,0 +1,60 @@
+apiVersion: argoproj.io/v1alpha1 # apps/v1 -> argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: enjoy-front-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enjoy-front
+  template:
+    metadata:
+      name: enjoy-front-pod
+      labels:
+        app: enjoy-front
+    spec:
+      containers:
+        - name: enjoy-front-container
+          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front:20250922-022207
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: enjoy-front
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: enjoy-front
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname 
+                labelSelector:
+                  matchLabels:
+  strategy:
+    canary:
+      steps:
+        - setWeight: 25
+        - pause: { duration: 10 }
+        - setWeight: 50
+        - pause: { duration: 10 }
+        - setWeight: 100
