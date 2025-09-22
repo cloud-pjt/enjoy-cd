@@ -26,10 +26,10 @@ spec:
               port: 80
           resources:
             requests:
-              cpu: 100m
+              cpu: 300m
               memory: 100Mi
             limits:
-              cpu: 100m
+              cpu: 300m
               memory: 100Mi
       topologySpreadConstraints:
         - maxSkew: 1
