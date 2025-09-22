@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: enjoy-back-container
-          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back:20250918-085032
+          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back:20250922-021844
           env:
             - name: DB_URL
               valueFrom:
