@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: enjoy-front-container
-          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front:20250922-075137
+          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front:20250922-080203
           ports:
             - containerPort: 80
           livenessProbe:
