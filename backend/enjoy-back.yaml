@@ -34,11 +34,11 @@ spec:
                   key: DB_PASSWORD
           resources:
             requests:
-              cpu: 100m
-              memory: 100Mi
+              cpu: 300m
+              memory: 500Mi
             limits:
-              cpu: 100m
-              memory: 100Mi
+              cpu: 300m
+              memory: 500Mi
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: kubernetes.io/hostname
