@@ -23,7 +23,7 @@ spec:
       containers:
         - name: enjoy-front-container
           imagePullPolicy: Always
-          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front:20250922-081711
+          image: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front:20250922-082915
           ports:
             - containerPort: 80
           livenessProbe:
