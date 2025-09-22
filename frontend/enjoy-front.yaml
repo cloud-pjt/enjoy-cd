@@ -50,6 +50,7 @@ spec:
                 topologyKey: kubernetes.io/hostname 
                 labelSelector:
                   matchLabels:
+                    app: enjoy-front
   strategy:
     canary:
       steps:
