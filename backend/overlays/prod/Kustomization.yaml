@@ -1,0 +1,7 @@
+namespace: default
+resources:
+  - ../../base
+images:
+  - name: eclipse-temurin
+    newName: 868422696413.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back
+    newTag: prod-latest
