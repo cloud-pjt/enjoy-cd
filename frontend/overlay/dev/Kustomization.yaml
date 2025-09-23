@@ -1,0 +1,7 @@
+namespace: default-dev
+resources:
+  - ../../base
+images:
+  - name: nginx
+    newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front
+    newTag: dev-latest
