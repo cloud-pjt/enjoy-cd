@@ -1,7 +1,9 @@
 namespace: default-dev
 resources:
-  - ../../base
+- ../../base
 images:
-  - name: nginx
-    newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front
-    newTag: dev-latest
+- name: nginx
+  newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/
+  newTag: 20250924-145026
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
