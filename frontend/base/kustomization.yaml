@@ -1,3 +1,4 @@
 resources:
 - enjoy-front.yaml
 - enjoy-front-service.yaml
+- enjoy-front-hpa.yaml
