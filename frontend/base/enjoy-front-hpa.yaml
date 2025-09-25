@@ -1,0 +1,18 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: enjoy-front-hpa
+spec:
+  scaleTargetRef: # 오토스케일할 대상
+    apiVersion: apps/v1
+    kind: Deployment
+    name: enjoy-front-deploy
+  minReplicas: 1 # 최소 파드 수
+  maxReplicas: 25 # 최대 파드 수
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization # CPU 평균 사용률 기반
+          averageUtilization: 20
