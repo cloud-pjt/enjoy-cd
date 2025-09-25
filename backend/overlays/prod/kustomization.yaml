@@ -1,8 +1,10 @@
 namespace: default-prod
 resources:
-  - ../../base
-  - enjoydb-secret.yaml
+- ../../base
+- enjoydb-secret.yaml
 images:
-  - name: eclipse-temurin
-    newName: 868422696413.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back
-    newTag: prod-latest
+- name: eclipse-temurin
+  newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/
+  newTag: 20250925-155321
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
