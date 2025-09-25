@@ -1,6 +1,7 @@
 namespace: default-dev
 resources:
 - ../../base
+- ingress.yaml
 images:
 - name: nginx
   newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/
