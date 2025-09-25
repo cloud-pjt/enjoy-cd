@@ -1,4 +1,4 @@
-namespace: default-dev
+namespace: default
 resources:
 - ../../base
 - enjoydb-secret.yaml
