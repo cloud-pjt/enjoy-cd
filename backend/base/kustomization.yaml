@@ -2,3 +2,4 @@ resources:
   - enjoy-back-service.yaml
   - enjoy-back.yaml
   - enjoydb-secret.yaml
+  - enjoy-back-hpa.yaml
