@@ -3,7 +3,6 @@ kind: Rollout
 metadata:
   name: enjoy-back-deploy
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: enjoy-back
