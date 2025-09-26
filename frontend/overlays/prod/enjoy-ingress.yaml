@@ -28,20 +28,20 @@ spec:
                 name: enjoy-back-service
                 port:
                   number: 8080
-  - host: epflswu.shop
-    http:
-      paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: enjoy-front-service
-              port:
-                number: 80
-        - path: /api
-          pathType: Prefix
-          backend:
-            service:
-              name: enjoy-back-service
-              port:
-                number: 8080
+    - host: epflswu.shop
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: enjoy-front-service
+                port:
+                  number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: enjoy-back-service
+                port:
+                  number: 8080
