@@ -3,6 +3,9 @@ resources:
 - ../../base
 - enjoydb-secret.yaml
 images:
+- name: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back-prod
+  newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-back-prod
+  newTag: 20250926-153717
 - name: eclipse-temurin
   newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/
   newTag: 20250925-155321
