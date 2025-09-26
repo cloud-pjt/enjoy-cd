@@ -3,6 +3,9 @@ resources:
 - ../../base
 - enjoy-ingress.yaml
 images:
+- name: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front
+  newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front-prod
+  newTag: 20250926-182742
 - name: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front-prod
   newName: 255260635764.dkr.ecr.ap-northeast-2.amazonaws.com/enjoy-front-prod
   newTag: 20250926-182742
