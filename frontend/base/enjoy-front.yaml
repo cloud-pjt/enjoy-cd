@@ -5,7 +5,6 @@ kind: Rollout
 metadata:
   name: enjoy-front-deploy
 spec:
-  replicas: 4
   selector:
     matchLabels:
       app: enjoy-front
