@@ -33,8 +33,8 @@ spec:
                   key: DB_PASSWORD
           resources:
             requests:
-              cpu: 300m
-              memory: 300Mi
+              cpu: 200m
+              memory: 400Mi
             limits:
               cpu: 300m
               memory: 300Mi
