@@ -33,10 +33,10 @@ spec:
                   key: DB_PASSWORD
           resources:
             requests:
-              cpu: 300m
+              cpu: 400m
               memory: 300Mi
             limits:
-              cpu: 300m
+              cpu: 400m
               memory: 300Mi
       topologySpreadConstraints:
         - maxSkew: 1
